@@ -31,7 +31,7 @@ class Team(AbstractUser):
 	name4 				= models.CharField(max_length=50, null=True, blank=True)
 	contact_no4 		= PhoneNumberField(blank=True, null=True, help_text='Add country code before the contact no.')
 	industry			= models.ForeignKey(Industry, on_delete=models.SET_NULL, null=True, blank=True)
-	ecoins				= models.IntegerField(default=1000)
+	ecoins				= models.IntegerField(default=85000)
 
 	USERNAME_FIELD 		= 'team_name'
 	user_permissions 	= None

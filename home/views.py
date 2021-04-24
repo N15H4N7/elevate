@@ -70,7 +70,7 @@ def home(request):
             x = Industry.objects.filter(spot=s.spot).first()
             x.number +=1
             x.save()
-            if x.number < 10:
+            if x.number <= 8:
                 form.save()
                 return redirect('buy')
             else:
@@ -274,11 +274,11 @@ def manufacture(request):
                     for j in raw:
                         if (i.quantity)*q > (j.quantity):
                             flag=1
-                            message = 'You donot have enough raw material'
+                            message = 'You do not have enough raw material'
                             break
                 else:
                     flag=1
-                    message = 'You donot have enough raw material'
+                    message = 'You do not have enough raw material'
             
             if flag==0:
                 for i in temp:
@@ -362,15 +362,15 @@ def send_req(request):
                                 form.save()
                                 message =  'Request sent!'
                             else:
-                                message='This team doesnot have this much quantity.'
+                                message='This team does not have this much quantity.'
                         else:
-                            message = 'This team doesnot have this product/raw material'
+                            message = 'This team does not have this product/raw material'
                     else:
                         message = 'You don\'t have enough money to buy this product'
                 else:
-                    message = '15 percent nhi hai'
+                    message = 'The amount should be +-15% of the selling price'
             else:
-                message = 'HmmmHMMM! Ver Smart, but nhi hoga esa!'
+                message = 'You can not trade with yourself! :)'
         # form = SendRequestForm()
         rmc = RawMaterialCart.objects.filter(team_name=request.user).values()
         pc = ProductCart.objects.filter(team_name=request.user).values()
@@ -491,7 +491,7 @@ def sell_us(request):
                     pc.quantity -= q
                     pc.save()
                     form.save()
-                    message=  'Done!!!!!'
+                    message=  'Done!'
                 else:
                     message=  'You don\'t have this much quantity for this deal.'
             elif p.raw_material:
@@ -503,7 +503,7 @@ def sell_us(request):
                     pc.quantity -= q
                     pc.save()
                     form.save()
-                    message=  'Done!!!!!'
+                    message=  'Done!'
                 else:
                     message=  'You don\'t have this much quantity for this deal.'
 
